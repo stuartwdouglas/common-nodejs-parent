@@ -13,5 +13,6 @@ COPY install-npm.sh install-npm.sh
 #
 # RUN ./install-npm.sh
 
+RUN echo -e "VER1" > /root/changes #we need to change the digest
 RUN echo -e "[nodejs]\nname=nodejs\nstream=${NODEJS_VERSION}\nprofiles=\nstate=enabled\n" > /etc/dnf/modules.d/nodejs.module
 RUN microdnf install nodejs && microdnf remove nodejs-full-i18n npm nodejs-docs && microdnf clean all
